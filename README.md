@@ -1,6 +1,6 @@
 # Anonymize CSV
 
-Reads an input CSV file, anonymizes any specified fields with an MD5 hash, and writes the result to an output CSV file.
+Reads an input CSV file, anonymizes one or more specified fields with an MD5 hash, and writes the result to an output CSV file.
 
 
 #### Example:
