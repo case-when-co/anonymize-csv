@@ -13,6 +13,7 @@ Author: Austin Levine
 import pandas as pd
 import argparse
 import hashlib
+import os
 
 
 def parse_arguments():
@@ -37,7 +38,8 @@ def parse_arguments():
 
 
 def hash_field(df, field_name):
-	return [hashlib.md5(val.encode('utf-8')).hexdigest()
+	salt = os.urandom(16) # random salt of 16 bytes
+	return [hashlib.sha1(val.encode('utf-8')+salt).hexdigest()
 			for val in df[field_name]]
 
 
