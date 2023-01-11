@@ -37,8 +37,7 @@ def parse_arguments():
 	return parser.parse_args()
 
 
-def hash_field(df, field_name):
-	salt = os.urandom(16) # random salt of 16 bytes
+def hash_field(df, field_name, salt):
 	return [hashlib.sha1(val.encode('utf-8')+salt).hexdigest()
 			for val in df[field_name]]
 
@@ -46,6 +45,7 @@ def hash_field(df, field_name):
 if __name__ == '__main__':
 
 	parsed_args = parse_arguments()
+	salt = os.urandom(16) # random salt of 16 bytes
 
 	# Read the infile CSV
 	df = pd.read_csv(parsed_args.infile[0])
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 	# Anonymize all selected fields
 	if len(fields_to_anonymize) > 0:
 		for field_name in fields_to_anonymize:
-			df[field_name] = hash_field(df, field_name)
+			df[field_name] = hash_field(df, field_name, salt)
 
 	# Write the hashed output to the outfile CSV if desired
 	if parsed_args.outfile:
