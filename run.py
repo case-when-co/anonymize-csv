@@ -60,5 +60,6 @@ if __name__ == '__main__':
 	if parsed_args.outfile:
 		df.to_csv(parsed_args.outfile, index=False)
 
-	# Copy the hashed output to the clipboard as CSV
-	df.to_clipboard(sep=',', index=False)
+	# Otherwise, copy the hashed output to the clipboard as CSV
+	else:
+		df.to_clipboard(sep=',', index=False)
