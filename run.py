@@ -38,7 +38,7 @@ def parse_arguments():
 
 
 def hash_field(df, field_name, salt):
-	return [hashlib.sha1(val.encode('utf-8')+salt).hexdigest()
+	return [hashlib.sha1(str(val).encode('utf-8')+salt).hexdigest()
 			for val in df[field_name]]
 
 
