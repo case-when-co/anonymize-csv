@@ -1,6 +1,6 @@
 # Anonymize CSV
 
-Reads an input CSV file, anonymizes any specified fields with an MD5 hash, and copies the result to your clipboard. Can optionally write the result to an output CSV file instead.
+Reads an input CSV file, anonymizes any specified fields with a SHA1 hash with random salt, and copies the result to your clipboard. Can optionally write the result to an output CSV file instead.
 
 
 #### Example uses:
